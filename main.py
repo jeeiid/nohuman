@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QDesktopWidget, QLabel
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QDesktopWidget, QLabel, QVBoxLayout
 from PyQt5.QtCore import QCoreApplication, QDate
 
 now = QDate.currentDate()
@@ -20,6 +20,10 @@ class MyApp(QMainWindow):
       ppbtn.move (150, 50)
       ppbtn.resize(ppbtn.sizeHint())
       ppbtn.clicked.connect(QCoreApplication.instance().quit)
+
+      dateL = QLabel(now.toString(), self)
+      font1 = dateL.font()
+      font1.setPointSize(20)
 
       self.statusBar().showMessage('준비됨')
       self.setWindowTitle('매점 결제기')
