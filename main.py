@@ -1,9 +1,10 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
-from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QDesktopWidget, QLabel
+from PyQt5.QtCore import QCoreApplication, QDate
 
+now = QDate.currentDate()
 
-class MyApp(QWidget):
+class MyApp(QMainWindow):
 
   def __init__(self):
       super().__init__()
@@ -15,10 +16,22 @@ class MyApp(QWidget):
       cpbtn.resize(cpbtn.sizeHint())
       cpbtn.clicked.connect(QCoreApplication.instance().quit)
 
-      self.setWindowTitle('Quit Button')
-      self.setGeometry(300, 300, 300, 200)
+      ppbtn = QPushButton('현금 결제', self)
+      ppbtn.move (150, 50)
+      ppbtn.resize(ppbtn.sizeHint())
+      ppbtn.clicked.connect(QCoreApplication.instance().quit)
+
+      self.statusBar().showMessage('준비됨')
+      self.setWindowTitle('매점 결제기')
+      self.setGeometry(500, 500, 500, 400)
+      self.center()
       self.show()
 
+  def center(self):
+      qr = self.frameGeometry()
+      cp = QDesktopWidget().availableGeometry().center()
+      qr.moveCenter(cp)
+      self.move(qr.topLeft())
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
