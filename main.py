@@ -10,10 +10,10 @@ class MyApp(QWidget):
       self.initUI()
 
   def initUI(self):
-      btn = QPushButton('카드 결제', self)
-      btn.move(50, 50)
-      btn.resize(btn.sizeHint())
-      btn.clicked.connect(QCoreApplication.instance().quit)
+      cpbtn = QPushButton('카드 결제', self)
+      cpbtn.move(50, 50)
+      cpbtn.resize(cpbtn.sizeHint())
+      cpbtn.clicked.connect(QCoreApplication.instance().quit)
 
       self.setWindowTitle('Quit Button')
       self.setGeometry(300, 300, 300, 200)
